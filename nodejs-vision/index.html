@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.5.5">
+  <meta charset="utf-8">
+  <title>@google-cloud/vision 0.23.0 &raquo; Home</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <div id="toc-nav-container">
+    <div id="toc-nav">
+      hi
+    </div>
+  </div>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>
+              @google-cloud/vision 0.23.0
+            </h1>
+          </header>
+          <article>
+            <p><img src="https://avatars2.githubusercontent.com/u/2810941?v=3&s=96" alt="Google Cloud Platform logo" title="Google Cloud Platform" align="right" height="96" width="96" /></p>
+            <h1><a href="https://github.com/googleapis/nodejs-vision">Google Cloud Vision API: Node.js Client</a></h1>
+            <p><a href="https://cloud.google.com/terms/launch-stages"><img src="https://img.shields.io/badge/release%20level-beta-yellow.svg?style&#x3D;flat" alt="release level"></a>
+              <a href="https://circleci.com/gh/googleapis/nodejs-vision"><img src="https://img.shields.io/circleci/project/github/googleapis/nodejs-vision.svg?style=flat" alt="CircleCI"></a>
+              <a href="https://ci.appveyor.com/project/googleapis/nodejs-vision"><img src="https://ci.appveyor.com/api/projects/status/github/googleapis/nodejs-vision?branch=master&amp;svg=true" alt="AppVeyor"></a>
+              <a href="https://codecov.io/gh/googleapis/nodejs-vision"><img src="https://img.shields.io/codecov/c/github/googleapis/nodejs-vision/master.svg?style=flat" alt="codecov"></a></p>
+            <blockquote>
+              <p>Node.js idiomatic client for <a href="https://cloud.google.com/vision/docs">Vision API</a>.</p>
+            </blockquote>
+            <p>The <a href="https://cloud.google.com/vision/docs">Cloud Vision API</a> allows developers to easily integrate vision detection features within applications, including image labeling, face and landmark detection, optical character recognition
+              (OCR), and tagging of explicit content.</p>
+            <ul>
+              <li><a href="https://cloud.google.com/nodejs/docs/reference/vision/latest/">Vision API Node.js Client API Reference</a></li>
+              <li><a href="https://github.com/googleapis/nodejs-vision">github.com/googleapis/nodejs-vision</a></li>
+              <li><a href="https://cloud.google.com/vision/docs">Vision API Documentation</a></li>
+            </ul>
+            <p>Read more about the client libraries for Cloud APIs, including the older Google APIs Client Libraries, in <a href="https://cloud.google.com/apis/docs/client-libraries-explained">Client Libraries Explained</a>.</p>
+            <p><strong>Table of contents:</strong></p>
+            <ul>
+              <li><a href="#quickstart">Quickstart</a>
+                <ul>
+                  <li><a href="#before-you-begin">Before you begin</a></li>
+                  <li><a href="#installing-the-client-library">Installing the client library</a></li>
+                  <li><a href="#using-the-client-library">Using the client library</a></li>
+                </ul>
+              </li>
+              <li><a href="#samples">Samples</a></li>
+              <li><a href="#versioning">Versioning</a></li>
+              <li><a href="#contributing">Contributing</a></li>
+              <li><a href="#license">License</a></li>
+            </ul>
+            <h2>Quickstart</h2>
+            <h3>Before you begin</h3>
+            <ol>
+              <li>
+                <p>Select or create a Cloud Platform project.</p>
+                <p><a href="https://console.cloud.google.com/project">Go to the projects page</a></p>
+              </li>
+              <li>
+                <p>Enable billing for your project.</p>
+                <p><a href="https://support.google.com/cloud/answer/6293499#enable-billing">Enable billing</a></p>
+              </li>
+              <li>
+                <p>Enable the Google Cloud Vision API API.</p>
+                <p><a href="https://console.cloud.google.com/flows/enableapi?apiid=vision.googleapis.com">Enable the API</a></p>
+              </li>
+              <li>
+                <p><a href="https://cloud.google.com/docs/authentication/getting-started">Set up authentication with a service account</a> so you can access the API from your local workstation.</p>
+              </li>
+            </ol>
+            <h3>Installing the client library</h3>
+            <pre class="prettyprint source"><code>npm install --save @google-cloud/vision</code></pre>
+            <h3>Using the client library</h3>
+            <pre class="prettyprint source lang-javascript"><code>// Imports the Google Cloud client library
+const vision = require('@google-cloud/vision');
+
+// Creates a client
+const client = new vision.ImageAnnotatorClient();
+
+// Performs label detection on the image file
+client
+  .labelDetection('./resources/wakeupcat.jpg')
+  .then(results => {
+    const labels = results[0].labelAnnotations;
+
+    console.log('Labels:');
+    labels.forEach(label => console.log(label.description));
+  })
+  .catch(err => {
+    console.error('ERROR:', err);
+  });</code></pre>
+            <h2>Samples</h2>
+            <p>Samples are in the <a href="https://github.com/googleapis/nodejs-vision/tree/master/samples"><code>samples/</code></a> directory. The samples' <code>README.md</code> has instructions for running the samples.</p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Sample</th>
+                  <th>Source Code</th>
+                  <th>Try it</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Detection samples</td>
+                  <td><a href="https://github.com/googleapis/nodejs-vision/blob/master/samples/detect.js">source code</a></td>
+                  <td><a href="https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-vision&amp;page=editor&amp;open_in_editor=samples/detect.js,samples/README.md"><img src="https://gstatic.com/cloudssh/images/open-btn.png" alt="Open in Cloud Shell"></a></td>
+                </tr>
+                <tr>
+                  <td>Detection samples for Beta API</td>
+                  <td><a href="https://github.com/googleapis/nodejs-vision/blob/master/samples/detect.v1p1beta1.js">source code</a></td>
+                  <td><a href="https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/googleapis/nodejs-vision&amp;page=editor&amp;open_in_editor=samples/detect.v1p1beta1.js,samples/README.md"><img src="https://gstatic.com/cloudssh/images/open-btn.png" alt="Open in Cloud Shell"></a></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>The <a href="https://cloud.google.com/nodejs/docs/reference/vision/latest/">Vision API Node.js Client API Reference</a> documentation also contains samples.</p>
+            <h2>Versioning</h2>
+            <p>This library follows <a href="http://semver.org/">Semantic Versioning</a>.</p>
+            <p>This library is considered to be in <strong>beta</strong>. This means it is expected to be mostly stable while we work toward a general availability release; however, complete stability is not guaranteed. We will address issues and requests
+              against beta libraries with a high priority.</p>
+            <p>More Information: <a href="https://cloud.google.com/terms/launch-stages">Google Cloud Platform Launch Stages</a></p>
+            <h2>Contributing</h2>
+            <p>Contributions welcome! See the <a href="https://github.com/googleapis/nodejs-vision/blob/master/.github/CONTRIBUTING.md">Contributing Guide</a>.</p>
+            <h2>License</h2>
+            <p>Apache Version 2.0</p>
+            <p>See <a href="https://github.com/googleapis/nodejs-vision/blob/master/LICENSE">LICENSE</a></p>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.5.5 on November 16, 2018.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

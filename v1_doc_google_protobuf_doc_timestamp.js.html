@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.5.5">
+  <meta charset="utf-8">
+  <title>@google-cloud/vision 0.23.0 &raquo; Source: v1/doc/google/protobuf/doc_timestamp.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <div id="toc-nav-container">
+    <div id="toc-nav">
+      hi
+    </div>
+  </div>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: v1/doc/google/protobuf/doc_timestamp.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>// Copyright 2018 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// Note: this file is purely for documentation. Any contents are not expected
+// to be loaded as the JS file.
+
+/**
+ * A Timestamp represents a point in time independent of any time zone
+ * or calendar, represented as seconds and fractions of seconds at
+ * nanosecond resolution in UTC Epoch time. It is encoded using the
+ * Proleptic Gregorian Calendar which extends the Gregorian calendar
+ * backwards to year one. It is encoded assuming all minutes are 60
+ * seconds long, i.e. leap seconds are &quot;smeared&quot; so that no leap second
+ * table is needed for interpretation. Range is from
+ * 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z.
+ * By restricting to that range, we ensure that we can convert to
+ * and from  RFC 3339 date strings.
+ * See [https://www.ietf.org/rfc/rfc3339.txt](https://www.ietf.org/rfc/rfc3339.txt).
+ *
+ * # Examples
+ *
+ * Example 1: Compute Timestamp from POSIX &#x60;time()&#x60;.
+ *
+ *     Timestamp timestamp;
+ *     timestamp.set_seconds(time(NULL));
+ *     timestamp.set_nanos(0);
+ *
+ * Example 2: Compute Timestamp from POSIX &#x60;gettimeofday()&#x60;.
+ *
+ *     struct timeval tv;
+ *     gettimeofday(&amp;amp;tv, NULL);
+ *
+ *     Timestamp timestamp;
+ *     timestamp.set_seconds(tv.tv_sec);
+ *     timestamp.set_nanos(tv.tv_usec * 1000);
+ *
+ * Example 3: Compute Timestamp from Win32 &#x60;GetSystemTimeAsFileTime()&#x60;.
+ *
+ *     FILETIME ft;
+ *     GetSystemTimeAsFileTime(&amp;amp;ft);
+ *     UINT64 ticks &#x3D; (((UINT64)ft.dwHighDateTime) &amp;lt;&amp;lt; 32) | ft.dwLowDateTime;
+ *
+ *     // A Windows tick is 100 nanoseconds. Windows epoch 1601-01-01T00:00:00Z
+ *     // is 11644473600 seconds before Unix epoch 1970-01-01T00:00:00Z.
+ *     Timestamp timestamp;
+ *     timestamp.set_seconds((INT64) ((ticks / 10000000) - 11644473600LL));
+ *     timestamp.set_nanos((INT32) ((ticks % 10000000) * 100));
+ *
+ * Example 4: Compute Timestamp from Java &#x60;System.currentTimeMillis()&#x60;.
+ *
+ *     long millis &#x3D; System.currentTimeMillis();
+ *
+ *     Timestamp timestamp &#x3D; Timestamp.newBuilder().setSeconds(millis / 1000)
+ *         .setNanos((int) ((millis % 1000) * 1000000)).build();
+ *
+ *
+ * Example 5: Compute Timestamp from current time in Python.
+ *
+ *     timestamp &#x3D; Timestamp()
+ *     timestamp.GetCurrentTime()
+ *
+ * # JSON Mapping
+ *
+ * In JSON format, the Timestamp type is encoded as a string in the
+ * [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. That is, the
+ * format is &quot;{year}-{month}-{day}T{hour}:{min}:{sec}[.{frac_sec}]Z&quot;
+ * where {year} is always expressed using four digits while {month}, {day},
+ * {hour}, {min}, and {sec} are zero-padded to two digits each. The fractional
+ * seconds, which can go up to 9 digits (i.e. up to 1 nanosecond resolution),
+ * are optional. The &quot;Z&quot; suffix indicates the timezone (&quot;UTC&quot;); the timezone
+ * is required. A proto3 JSON serializer should always use UTC (as indicated by
+ * &quot;Z&quot;) when printing the Timestamp type and a proto3 JSON parser should be
+ * able to accept both UTC and other timezones (as indicated by an offset).
+ *
+ * For example, &quot;2017-01-15T01:30:15.01Z&quot; encodes 15.01 seconds past
+ * 01:30 UTC on January 15, 2017.
+ *
+ * In JavaScript, one can convert a Date object to this format using the
+ * standard [toISOString()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toISOString]
+ * method. In Python, a standard &#x60;datetime.datetime&#x60; object can be converted
+ * to this format using [&#x60;strftime&#x60;](https://docs.python.org/2/library/time.html#time.strftime)
+ * with the time format spec &#x27;%Y-%m-%dT%H:%M:%S.%fZ&#x27;. Likewise, in Java, one
+ * can use the Joda Time&#x27;s [&#x60;ISODateTimeFormat.dateTime()&#x60;](https://cloud.google.com
+ * http://www.joda.org/joda-time/apidocs/org/joda/time/format/ISODateTimeFormat.html#dateTime--
+ * ) to obtain a formatter capable of generating timestamps in this format.
+ *
+ * @property {number} seconds
+ *   Represents seconds of UTC time since Unix epoch
+ *   1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to
+ *   9999-12-31T23:59:59Z inclusive.
+ *
+ * @property {number} nanos
+ *   Non-negative fractions of a second at nanosecond resolution. Negative
+ *   second values with fractions must still have non-negative nanos values
+ *   that count forward in time. Must be from 0 to 999,999,999
+ *   inclusive.
+ *
+ * @typedef Timestamp
+ * @memberof google.protobuf
+ * @see [google.protobuf.Timestamp definition in proto format]{@link https://github.com/google/protobuf/blob/master/src/google/protobuf/timestamp.proto}
+ */
+const Timestamp &#x3D; {
+  // This is for documentation. Actual contents will be loaded by gRPC.
+};</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.5.5 on November 16, 2018.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

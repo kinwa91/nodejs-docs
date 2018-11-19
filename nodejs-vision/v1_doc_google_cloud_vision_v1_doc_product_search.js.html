@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.5.5">
+  <meta charset="utf-8">
+  <title>@google-cloud/vision 0.23.0 &raquo; Source: v1/doc/google/cloud/vision/v1/doc_product_search.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <div id="toc-nav-container">
+    <div id="toc-nav">
+      hi
+    </div>
+  </div>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: v1/doc/google/cloud/vision/v1/doc_product_search.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>// Copyright 2018 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+// Note: this file is purely for documentation. Any contents are not expected
+// to be loaded as the JS file.
+
+/**
+ * Parameters for a product search request.
+ *
+ * @property {Object} boundingPoly
+ *   The bounding polygon around the area of interest in the image.
+ *   Optional. If it is not specified, system discretion will be applied.
+ *
+ *   This object should have the same structure as [BoundingPoly]{@link google.cloud.vision.v1.BoundingPoly}
+ *
+ * @property {string} productSet
+ *   The resource name of a ProductSet to be searched for similar images.
+ *
+ *   Format is:
+ *   &#x60;projects/PROJECT_ID/locations/LOC_ID/productSets/PRODUCT_SET_ID&#x60;.
+ *
+ * @property {string[]} productCategories
+ *   The list of product categories to search in. Currently, we only consider
+ *   the first category, and either &quot;homegoods&quot;, &quot;apparel&quot;, or &quot;toys&quot; should be
+ *   specified.
+ *
+ * @property {string} filter
+ *   The filtering expression. This can be used to restrict search results based
+ *   on Product labels. We currently support an AND of OR of key-value
+ *   expressions, where each expression within an OR must have the same key.
+ *
+ *   For example, &quot;(color &#x3D; red OR color &#x3D; blue) AND brand &#x3D; Google&quot; is
+ *   acceptable, but not &quot;(color &#x3D; red OR brand &#x3D; Google)&quot; or &quot;color: red&quot;.
+ *
+ * @typedef ProductSearchParams
+ * @memberof google.cloud.vision.v1
+ * @see [google.cloud.vision.v1.ProductSearchParams definition in proto format]{@link https://github.com/googleapis/googleapis/blob/master/google/cloud/vision/v1/product_search.proto}
+ */
+const ProductSearchParams &#x3D; {
+  // This is for documentation. Actual contents will be loaded by gRPC.
+};
+
+/**
+ * Results for a product search request.
+ *
+ * @property {Object} indexTime
+ *   Timestamp of the index which provided these results. Changes made after
+ *   this time are not reflected in the current results.
+ *
+ *   This object should have the same structure as [Timestamp]{@link google.protobuf.Timestamp}
+ *
+ * @property {Object[]} results
+ *   List of results, one for each product match.
+ *
+ *   This object should have the same structure as [Result]{@link google.cloud.vision.v1.Result}
+ *
+ * @property {Object[]} productGroupedResults
+ *   List of results grouped by products detected in the query image. Each entry
+ *   corresponds to one bounding polygon in the query image, and contains the
+ *   matching products specific to that region. There may be duplicate product
+ *   matches in the union of all the per-product results.
+ *
+ *   This object should have the same structure as [GroupedResult]{@link google.cloud.vision.v1.GroupedResult}
+ *
+ * @typedef ProductSearchResults
+ * @memberof google.cloud.vision.v1
+ * @see [google.cloud.vision.v1.ProductSearchResults definition in proto format]{@link https://github.com/googleapis/googleapis/blob/master/google/cloud/vision/v1/product_search.proto}
+ */
+const ProductSearchResults &#x3D; {
+  // This is for documentation. Actual contents will be loaded by gRPC.
+
+  /**
+   * Information about a product.
+   *
+   * @property {Object} product
+   *   The Product.
+   *
+   *   This object should have the same structure as [Product]{@link google.cloud.vision.v1.Product}
+   *
+   * @property {number} score
+   *   A confidence level on the match, ranging from 0 (no confidence) to
+   *   1 (full confidence).
+   *
+   * @property {string} image
+   *   The resource name of the image from the product that is the closest match
+   *   to the query.
+   *
+   * @typedef Result
+   * @memberof google.cloud.vision.v1
+   * @see [google.cloud.vision.v1.ProductSearchResults.Result definition in proto format]{@link https://github.com/googleapis/googleapis/blob/master/google/cloud/vision/v1/product_search.proto}
+   */
+  Result: {
+    // This is for documentation. Actual contents will be loaded by gRPC.
+  },
+
+  /**
+   * Information about the products similar to a single product in a query
+   * image.
+   *
+   * @property {Object} boundingPoly
+   *   The bounding polygon around the product detected in the query image.
+   *
+   *   This object should have the same structure as [BoundingPoly]{@link google.cloud.vision.v1.BoundingPoly}
+   *
+   * @property {Object[]} results
+   *   List of results, one for each product match.
+   *
+   *   This object should have the same structure as [Result]{@link google.cloud.vision.v1.Result}
+   *
+   * @typedef GroupedResult
+   * @memberof google.cloud.vision.v1
+   * @see [google.cloud.vision.v1.ProductSearchResults.GroupedResult definition in proto format]{@link https://github.com/googleapis/googleapis/blob/master/google/cloud/vision/v1/product_search.proto}
+   */
+  GroupedResult: {
+    // This is for documentation. Actual contents will be loaded by gRPC.
+  }
+};</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.5.5 on November 16, 2018.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

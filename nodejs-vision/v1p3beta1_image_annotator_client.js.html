@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.5.5">
+  <meta charset="utf-8">
+  <title>@google-cloud/vision 0.23.0 &raquo; Source: v1p3beta1/image_annotator_client.js</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <div id="toc-nav-container">
+    <div id="toc-nav">
+      hi
+    </div>
+  </div>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-banner" role="banner">
+        </div>
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <h1>Source: v1p3beta1/image_annotator_client.js</h1>
+          </header>
+          <article>
+            <pre class="prettyprint linenums"><code>// Copyright 2018 Google LLC
+//
+// Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an &quot;AS IS&quot; BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+&#x27;use strict&#x27;;
+
+const gapicConfig &#x3D; require(&#x27;./image_annotator_client_config&#x27;);
+const gax &#x3D; require(&#x27;google-gax&#x27;);
+const merge &#x3D; require(&#x27;lodash.merge&#x27;);
+const path &#x3D; require(&#x27;path&#x27;);
+const protobuf &#x3D; require(&#x27;protobufjs&#x27;);
+
+const VERSION &#x3D; require(&#x27;../../package.json&#x27;).version;
+
+/**
+ * Service that performs Google Cloud Vision API detection tasks over client
+ * images, such as face, landmark, logo, label, and text detection. The
+ * ImageAnnotator service returns detected entities from the images.
+ *
+ * @class
+ * @memberof v1p3beta1
+ */
+class ImageAnnotatorClient {
+  /**
+   * Construct an instance of ImageAnnotatorClient.
+   *
+   * @param {object} [options] - The configuration object. See the subsequent
+   *   parameters for more details.
+   * @param {object} [options.credentials] - Credentials object.
+   * @param {string} [options.credentials.client_email]
+   * @param {string} [options.credentials.private_key]
+   * @param {string} [options.email] - Account email address. Required when
+   *     using a .pem or .p12 keyFilename.
+   * @param {string} [options.keyFilename] - Full path to the a .json, .pem, or
+   *     .p12 key downloaded from the Google Developers Console. If you provide
+   *     a path to a JSON file, the projectId option below is not necessary.
+   *     NOTE: .pem and .p12 require you to specify options.email as well.
+   * @param {number} [options.port] - The port on which to connect to
+   *     the remote host.
+   * @param {string} [options.projectId] - The project ID from the Google
+   *     Developer&#x27;s Console, e.g. &#x27;grape-spaceship-123&#x27;. We will also check
+   *     the environment variable GCLOUD_PROJECT for your project ID. If your
+   *     app is running in an environment which supports
+   *     {@link https://developers.google.com/identity/protocols/application-default-credentials Application Default Credentials},
+   *     your project ID will be detected automatically.
+   * @param {function} [options.promise] - Custom promise module to use instead
+   *     of native Promises.
+   * @param {string} [options.servicePath] - The domain name of the
+   *     API remote host.
+   */
+  constructor(opts) {
+    this._descriptors &#x3D; {};
+
+    // Ensure that options include the service address and port.
+    opts &#x3D; Object.assign(
+      {
+        clientConfig: {},
+        port: this.constructor.port,
+        servicePath: this.constructor.servicePath,
+      },
+      opts
+    );
+
+    // Create a &#x60;gaxGrpc&#x60; object, with any grpc-specific options
+    // sent to the client.
+    opts.scopes &#x3D; this.constructor.scopes;
+    const gaxGrpc &#x3D; new gax.GrpcClient(opts);
+
+    // Save the auth object to the client, for use by other methods.
+    this.auth &#x3D; gaxGrpc.auth;
+
+    // Determine the client header string.
+    const clientHeader &#x3D; [
+      &#x60;gl-node/${process.version}&#x60;,
+      &#x60;grpc/${gaxGrpc.grpcVersion}&#x60;,
+      &#x60;gax/${gax.version}&#x60;,
+      &#x60;gapic/${VERSION}&#x60;,
+    ];
+    if (opts.libName &amp;amp;&amp;amp; opts.libVersion) {
+      clientHeader.push(&#x60;${opts.libName}/${opts.libVersion}&#x60;);
+    }
+
+    // Load the applicable protos.
+    const protos &#x3D; merge(
+      {},
+      gaxGrpc.loadProto(
+        path.join(__dirname, &#x27;..&#x27;, &#x27;..&#x27;, &#x27;protos&#x27;),
+        &#x27;google/cloud/vision/v1p3beta1/image_annotator.proto&#x27;
+      )
+    );
+    let protoFilesRoot &#x3D; new gax.GoogleProtoFilesRoot();
+    protoFilesRoot &#x3D; protobuf.loadSync(
+      path.join(
+        __dirname,
+        &#x27;..&#x27;,
+        &#x27;..&#x27;,
+        &#x27;protos&#x27;,
+        &#x27;google/cloud/vision/v1p3beta1/image_annotator.proto&#x27;
+      ),
+      protoFilesRoot
+    );
+
+    // This API contains &quot;long-running operations&quot;, which return a
+    // an Operation object that allows for tracking of the operation,
+    // rather than holding a request open.
+    this.operationsClient &#x3D; new gax.lro({
+      auth: gaxGrpc.auth,
+      grpc: gaxGrpc.grpc,
+    }).operationsClient(opts);
+
+    const asyncBatchAnnotateFilesResponse &#x3D; protoFilesRoot.lookup(
+      &#x27;google.cloud.vision.v1p3beta1.AsyncBatchAnnotateFilesResponse&#x27;
+    );
+    const asyncBatchAnnotateFilesMetadata &#x3D; protoFilesRoot.lookup(
+      &#x27;google.cloud.vision.v1p3beta1.OperationMetadata&#x27;
+    );
+
+    this._descriptors.longrunning &#x3D; {
+      asyncBatchAnnotateFiles: new gax.LongrunningDescriptor(
+        this.operationsClient,
+        asyncBatchAnnotateFilesResponse.decode.bind(
+          asyncBatchAnnotateFilesResponse
+        ),
+        asyncBatchAnnotateFilesMetadata.decode.bind(
+          asyncBatchAnnotateFilesMetadata
+        )
+      ),
+    };
+
+    // Put together the default options sent with requests.
+    const defaults &#x3D; gaxGrpc.constructSettings(
+      &#x27;google.cloud.vision.v1p3beta1.ImageAnnotator&#x27;,
+      gapicConfig,
+      opts.clientConfig,
+      {&#x27;x-goog-api-client&#x27;: clientHeader.join(&#x27; &#x27;)}
+    );
+
+    // Set up a dictionary of &quot;inner API calls&quot;; the core implementation
+    // of calling the API is handled in &#x60;google-gax&#x60;, with this code
+    // merely providing the destination and request information.
+    this._innerApiCalls &#x3D; {};
+
+    // Put together the &quot;service stub&quot; for
+    // google.cloud.vision.v1p3beta1.ImageAnnotator.
+    const imageAnnotatorStub &#x3D; gaxGrpc.createStub(
+      protos.google.cloud.vision.v1p3beta1.ImageAnnotator,
+      opts
+    );
+
+    // Iterate over each of the methods that the service provides
+    // and create an API call method for each.
+    const imageAnnotatorStubMethods &#x3D; [
+      &#x27;batchAnnotateImages&#x27;,
+      &#x27;asyncBatchAnnotateFiles&#x27;,
+    ];
+    for (const methodName of imageAnnotatorStubMethods) {
+      this._innerApiCalls[methodName] &#x3D; gax.createApiCall(
+        imageAnnotatorStub.then(
+          stub &#x3D;&gt;
+            function() {
+              const args &#x3D; Array.prototype.slice.call(arguments, 0);
+              return stub[methodName].apply(stub, args);
+            }
+        ),
+        defaults[methodName],
+        this._descriptors.longrunning[methodName]
+      );
+    }
+  }
+
+  /**
+   * The DNS address for this API service.
+   */
+  static get servicePath() {
+    return &#x27;vision.googleapis.com&#x27;;
+  }
+
+  /**
+   * The port for this API service.
+   */
+  static get port() {
+    return 443;
+  }
+
+  /**
+   * The scopes needed to make gRPC calls for every method defined
+   * in this service.
+   */
+  static get scopes() {
+    return [
+      &#x27;https://www.googleapis.com/auth/cloud-platform&#x27;,
+      &#x27;https://www.googleapis.com/auth/cloud-vision&#x27;,
+    ];
+  }
+
+  /**
+   * Return the project ID used by this class.
+   * @param {function(Error, string)} callback - the callback to
+   *   be called with the current project Id.
+   */
+  getProjectId(callback) {
+    return this.auth.getProjectId(callback);
+  }
+
+  // -------------------
+  // -- Service calls --
+  // -------------------
+
+  /**
+   * Run image detection and annotation for a batch of images.
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {Object[]} request.requests
+   *   Individual image annotation requests for this batch.
+   *
+   *   This object should have the same structure as [AnnotateImageRequest]{@link google.cloud.vision.v1p3beta1.AnnotateImageRequest}
+   * @param {Object} [options]
+   *   Optional parameters. You can override the default settings for this call, e.g, timeout,
+   *   retries, paginations, etc. See [gax.CallOptions]{@link https://googleapis.github.io/gax-nodejs/global.html#CallOptions} for the details.
+   * @param {function(?Error, ?Object)} [callback]
+   *   The function which will be called with the result of the API call.
+   *
+   *   The second parameter to the callback is an object representing [BatchAnnotateImagesResponse]{@link google.cloud.vision.v1p3beta1.BatchAnnotateImagesResponse}.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is an object representing [BatchAnnotateImagesResponse]{@link google.cloud.vision.v1p3beta1.BatchAnnotateImagesResponse}.
+   *   The promise has a method named &quot;cancel&quot; which cancels the ongoing API call.
+   *
+   * @example
+   *
+   * const vision &#x3D; require(&#x27;@google-cloud/vision&#x27;);
+   *
+   * const client &#x3D; new vision.v1p3beta1.ImageAnnotatorClient({
+   *   // optional auth parameters.
+   * });
+   *
+   * const requests &#x3D; [];
+   * client.batchAnnotateImages({requests: requests})
+   *   .then(responses &#x3D;&gt; {
+   *     const response &#x3D; responses[0];
+   *     // doThingsWith(response)
+   *   })
+   *   .catch(err &#x3D;&gt; {
+   *     console.error(err);
+   *   });
+   */
+  batchAnnotateImages(request, options, callback) {
+    if (options instanceof Function &amp;amp;&amp;amp; callback &#x3D;&#x3D;&#x3D; undefined) {
+      callback &#x3D; options;
+      options &#x3D; {};
+    }
+    options &#x3D; options || {};
+
+    return this._innerApiCalls.batchAnnotateImages(request, options, callback);
+  }
+
+  /**
+   * Run asynchronous image detection and annotation for a list of generic
+   * files, such as PDF files, which may contain multiple pages and multiple
+   * images per page. Progress and results can be retrieved through the
+   * &#x60;google.longrunning.Operations&#x60; interface.
+   * &#x60;Operation.metadata&#x60; contains &#x60;OperationMetadata&#x60; (metadata).
+   * &#x60;Operation.response&#x60; contains &#x60;AsyncBatchAnnotateFilesResponse&#x60; (results).
+   *
+   * @param {Object} request
+   *   The request object that will be sent.
+   * @param {Object[]} request.requests
+   *   Individual async file annotation requests for this batch.
+   *
+   *   This object should have the same structure as [AsyncAnnotateFileRequest]{@link google.cloud.vision.v1p3beta1.AsyncAnnotateFileRequest}
+   * @param {Object} [options]
+   *   Optional parameters. You can override the default settings for this call, e.g, timeout,
+   *   retries, paginations, etc. See [gax.CallOptions]{@link https://googleapis.github.io/gax-nodejs/global.html#CallOptions} for the details.
+   * @param {function(?Error, ?Object)} [callback]
+   *   The function which will be called with the result of the API call.
+   *
+   *   The second parameter to the callback is a [gax.Operation]{@link https://googleapis.github.io/gax-nodejs/Operation} object.
+   * @returns {Promise} - The promise which resolves to an array.
+   *   The first element of the array is a [gax.Operation]{@link https://googleapis.github.io/gax-nodejs/Operation} object.
+   *   The promise has a method named &quot;cancel&quot; which cancels the ongoing API call.
+   *
+   * @example
+   *
+   * const vision &#x3D; require(&#x27;@google-cloud/vision&#x27;);
+   *
+   * const client &#x3D; new vision.v1p3beta1.ImageAnnotatorClient({
+   *   // optional auth parameters.
+   * });
+   *
+   * const requests &#x3D; [];
+   *
+   * // Handle the operation using the promise pattern.
+   * client.asyncBatchAnnotateFiles({requests: requests})
+   *   .then(responses &#x3D;&gt; {
+   *     const operation &#x3D; responses[0];
+   *     const initialApiResponse &#x3D; responses[1];
+   *
+   *     // Operation#promise starts polling for the completion of the LRO.
+   *     return operation.promise();
+   *   })
+   *   .then(responses &#x3D;&gt; {
+   *     // The final result of the operation.
+   *     const result &#x3D; responses[0];
+   *
+   *     // The metadata value of the completed operation.
+   *     const metadata &#x3D; responses[1];
+   *
+   *     // The response of the api call returning the complete operation.
+   *     const finalApiResponse &#x3D; responses[2];
+   *   })
+   *   .catch(err &#x3D;&gt; {
+   *     console.error(err);
+   *   });
+   *
+   * const requests &#x3D; [];
+   *
+   * // Handle the operation using the event emitter pattern.
+   * client.asyncBatchAnnotateFiles({requests: requests})
+   *   .then(responses &#x3D;&gt; {
+   *     const operation &#x3D; responses[0];
+   *     const initialApiResponse &#x3D; responses[1];
+   *
+   *     // Adding a listener for the &quot;complete&quot; event starts polling for the
+   *     // completion of the operation.
+   *     operation.on(&#x27;complete&#x27;, (result, metadata, finalApiResponse) &#x3D;&gt; {
+   *       // doSomethingWith(result);
+   *     });
+   *
+   *     // Adding a listener for the &quot;progress&quot; event causes the callback to be
+   *     // called on any change in metadata when the operation is polled.
+   *     operation.on(&#x27;progress&#x27;, (metadata, apiResponse) &#x3D;&gt; {
+   *       // doSomethingWith(metadata)
+   *     });
+   *
+   *     // Adding a listener for the &quot;error&quot; event handles any errors found during polling.
+   *     operation.on(&#x27;error&#x27;, err &#x3D;&gt; {
+   *       // throw(err);
+   *     });
+   *   })
+   *   .catch(err &#x3D;&gt; {
+   *     console.error(err);
+   *   });
+   */
+  asyncBatchAnnotateFiles(request, options, callback) {
+    if (options instanceof Function &amp;amp;&amp;amp; callback &#x3D;&#x3D;&#x3D; undefined) {
+      callback &#x3D; options;
+      options &#x3D; {};
+    }
+    options &#x3D; options || {};
+
+    return this._innerApiCalls.asyncBatchAnnotateFiles(
+      request,
+      options,
+      callback
+    );
+  }
+}
+
+module.exports &#x3D; ImageAnnotatorClient;
+</code></pre>
+          </article>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.5.5 on November 16, 2018.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,460 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta name="generator" content="JSDoc 3.5.5">
+  <meta charset="utf-8">
+  <title>@google-cloud/vision 0.23.0 &raquo; Class: ImageAnnotatorClient</title>
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Karla:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Noto+Serif:400,400i,700,700i" type="text/css">
+  <link rel="stylesheet" href="https://brick.a.ssl.fastly.net/Inconsolata:500" type="text/css">
+  <link href="css/baseline.css" rel="stylesheet">
+</head>
+
+<body onload="prettyPrint()">
+  <div id="toc-nav-container">
+    <div id="toc-nav">
+      hi
+    </div>
+  </div>
+  <div id="jsdoc-body-container">
+    <div id="jsdoc-content">
+      <div id="jsdoc-content-container">
+        <div id="jsdoc-main" role="main">
+          <header class="page-header">
+            <div class="symbol-detail-labels"><span class="label label-kind">class</span>&nbsp;<span class="label label-static">static</span></div>
+            <h1><small>v1p1beta1.<wbr></small><span class="symbol-name">ImageAnnotatorClient</span></h1>
+            <p class="source-link">Source: <a href="v1p1beta1_image_annotator_client.js.html#source-line-32">v1p1beta1/<wbr>image_annotator_client.<wbr>js:32</a></p>
+            <div class="symbol-classdesc">
+              <p>Service that performs Google Cloud Vision API detection tasks over client images, such as face, landmark, logo, label, and text detection. The ImageAnnotator service returns detected entities from the images.</p>
+            </div>
+            <dl class="dl-compact">
+            </dl>
+          </header>
+          <section id="summary">
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Properties</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="v1p1beta1.ImageAnnotatorClient.html#.port">port</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="v1p1beta1.ImageAnnotatorClient.html#.scopes">scopes</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="v1p1beta1.ImageAnnotatorClient.html#.servicePath">servicePath</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+              </div>
+            </div>
+            <div class="summary-callout">
+              <h2 class="summary-callout-heading">Methods</h2>
+              <div class="summary-content">
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="v1p1beta1.ImageAnnotatorClient.html#batchAnnotateImages">batchAnnotateImages(request[, options][, callback])</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                  <dl class="dl-summary-callout">
+                    <dt><a href="v1p1beta1.ImageAnnotatorClient.html#getProjectId">getProjectId(callback)</a></dt>
+                    <dd>
+                    </dd>
+                  </dl>
+                </div>
+                <div class="summary-column">
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h2 id="ImageAnnotatorClient">new&nbsp;<span class="symbol-name">ImageAnnotatorClient</span><span class="signature"><span class="signature-params">([options])</span></span>
+            </h2>
+            <p>Construct an instance of ImageAnnotatorClient.</p>
+            <section>
+              <h3>Parameters</h3>
+              <table class="jsdoc-details-table">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Optional</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <p>options</p>
+                    </td>
+                    <td>
+                      <p>object</p>
+                    </td>
+                    <td>
+                      <p>Yes</p>
+                    </td>
+                    <td>
+                      <p>The configuration object. See the subsequent parameters for more details.</p>
+                      <p>Values in <code>options</code> have the following properties:</p>
+                      <table class="jsdoc-details-table">
+                        <thead>
+                          <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Optional</th>
+                            <th>Description</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>
+                              <p>credentials</p>
+                            </td>
+                            <td>
+                              <p>object</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                              <p>Credentials object.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>credentials.client_email</p>
+                            </td>
+                            <td>
+                              <p>string</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>credentials.private_key</p>
+                            </td>
+                            <td>
+                              <p>string</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>email</p>
+                            </td>
+                            <td>
+                              <p>string</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                              <p>Account email address. Required when using a .pem or .p12 keyFilename.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>keyFilename</p>
+                            </td>
+                            <td>
+                              <p>string</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                              <p>Full path to the a .json, .pem, or .p12 key downloaded from the Google Developers Console. If you provide a path to a JSON file, the projectId option below is not necessary. NOTE: .pem and .p12 require you to specify options.email
+                                as well.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>port</p>
+                            </td>
+                            <td>
+                              <p>number</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                              <p>The port on which to connect to the remote host.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>projectId</p>
+                            </td>
+                            <td>
+                              <p>string</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                              <p>The project ID from the Google Developer's Console, e.g. 'grape-spaceship-123'. We will also check the environment variable GCLOUD_PROJECT for your project ID. If your app is running in an environment which supports
+                                <a href="https://developers.google.com/identity/protocols/application-default-credentials">Application Default Credentials</a>, your project ID will be detected automatically.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>promise</p>
+                            </td>
+                            <td>
+                              <p>function()</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                              <p>Custom promise module to use instead of native Promises.</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <p>servicePath</p>
+                            </td>
+                            <td>
+                              <p>string</p>
+                            </td>
+                            <td>
+                              <p>Yes</p>
+                            </td>
+                            <td>
+                              <p>The domain name of the API remote host.</p>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </section>
+            <dl class="dl-compact">
+            </dl>
+          </section>
+          <section>
+            <h2>Properties</h2>
+            <section>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".port"><span class="symbol-name">port</span></h3>
+              <p>The port for this API service.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".scopes"><span class="symbol-name">scopes</span></h3>
+              <p>The scopes needed to make gRPC calls for every method defined in this service.</p>
+              <dl class="dl-compact">
+              </dl>
+              <div class="symbol-detail-labels"><span class="label label-static">static</span></div>
+              <h3 id=".servicePath"><span class="symbol-name">servicePath</span></h3>
+              <p>The DNS address for this API service.</p>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+            <h2>Methods</h2>
+            <section>
+              <h3 id="batchAnnotateImages"><span class="symbol-name">batchAnnotateImages</span><span class="signature"><span class="signature-params">(request[, options][, callback])</span>&nbsp;&rarr; <span class="signature-returns"> Promise</span></span>
+              </h3>
+              <p>Run image detection and annotation for a batch of images.</p>
+              <section>
+                <h4>
+                  Example
+                </h4>
+                <div>
+                  <pre class="prettyprint"><code>const vision &#x3D; require(&#x27;@google-cloud/vision&#x27;);
+
+const client &#x3D; new vision.v1p1beta1.ImageAnnotatorClient({
+  // optional auth parameters.
+});
+
+const requests &#x3D; [];
+client.batchAnnotateImages({requests: requests})
+  .then(responses &#x3D;&gt; {
+    const response &#x3D; responses[0];
+    // doThingsWith(response)
+  })
+  .catch(err &#x3D;&gt; {
+    console.error(err);
+  });</code></pre>
+                </div>
+              </section>
+              <section>
+                <h4>Parameters</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>request</p>
+                      </td>
+                      <td>
+                        <p>Object</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>The request object that will be sent.</p>
+                        <p>Values in <code>request</code> have the following properties:</p>
+                        <table class="jsdoc-details-table">
+                          <thead>
+                            <tr>
+                              <th>Name</th>
+                              <th>Type</th>
+                              <th>Optional</th>
+                              <th>Description</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <p>requests</p>
+                              </td>
+                              <td>
+                                <p>Array of Object</p>
+                              </td>
+                              <td>
+                                <p>&nbsp;</p>
+                              </td>
+                              <td>
+                                <p>Individual image annotation requests for this batch.</p>
+                                <p> This object should have the same structure as <a href="google.cloud.vision.v1p1beta1.html#.AnnotateImageRequest">AnnotateImageRequest</a></p>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>options</p>
+                      </td>
+                      <td>
+                        <p>Object</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>Optional parameters. You can override the default settings for this call, e.g, timeout, retries, paginations, etc. See <a href="https://googleapis.github.io/gax-nodejs/global.html#CallOptions">gax.CallOptions</a> for the details.</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p>function(nullable Error, nullable Object)</p>
+                      </td>
+                      <td>
+                        <p>Yes</p>
+                      </td>
+                      <td>
+                        <p>The function which will be called with the result of the API call.</p>
+                        <p> The second parameter to the callback is an object representing <a href="google.cloud.vision.v1p1beta1.html#.BatchAnnotateImagesResponse">BatchAnnotateImagesResponse</a>.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+                <dt>Returns</dt>
+                <dd>
+                  <p><code>Promise</code>&nbsp;
+                    <ul>
+                  </p>
+                  <p>
+                    <li>The promise which resolves to an array. The first element of the array is an object representing <a href="google.cloud.vision.v1p1beta1.html#.BatchAnnotateImagesResponse">BatchAnnotateImagesResponse</a>. The promise has a method named
+                      &quot;cancel&quot; which cancels the ongoing API call.</li>
+                    </ul>
+                  </p>
+                </dd>
+              </dl>
+              <h3 id="getProjectId"><span class="symbol-name">getProjectId</span><span class="signature"><span class="signature-params">(callback)</span></span>
+              </h3>
+              <p>Return the project ID used by this class.</p>
+              <section>
+                <h4>Parameter</h4>
+                <table class="jsdoc-details-table">
+                  <thead>
+                    <tr>
+                      <th>Name</th>
+                      <th>Type</th>
+                      <th>Optional</th>
+                      <th>Description</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <p>callback</p>
+                      </td>
+                      <td>
+                        <p>function(Error, string)</p>
+                      </td>
+                      <td>
+                        <p>&nbsp;</p>
+                      </td>
+                      <td>
+                        <p>the callback to be called with the current project Id.</p>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </section>
+              <dl class="dl-compact">
+              </dl>
+            </section>
+          </section>
+        </div>
+      </div>
+      <nav id="jsdoc-toc-nav" role="navigation"></nav>
+    </div>
+  </div>
+  <footer id="jsdoc-footer" class="jsdoc-footer">
+    <div id="jsdoc-footer-container">
+      <p>
+        Generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc</a> 3.5.5 on November 16, 2018.
+      </p>
+    </div>
+  </footer>
+  <script src="scripts/jquery.min.js"></script>
+  <script src="scripts/jquery.cookie.js"></script>
+  <script src="scripts/tree.jquery.js"></script>
+  <script src="scripts/prettify.js"></script>
+  <script src="scripts/jsdoc-toc.js"></script>
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/scrollanchor.js"></script>
+</body>
+
+</html>
